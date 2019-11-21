@@ -1,0 +1,8 @@
+{
+    "name": "video-content-analyzer",
+    "version": "0.0.1",
+    "description": "Video Content Analyzer with Web Demo",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
