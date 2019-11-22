@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>THY Demo</title>
+    <meta charset="utf-8">
+    <meta name="description" content="THY Video Context Recognition">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Alata|Poppins&display=swap" rel="stylesheet">
+    <script src="js/p5/p5.js"></script>
+    <script src="js/p5/p5.speech.js"></script>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+
+<body>
+    <input id="file_in" type="file" accepts="video/*" multiple>
+    <div class="full grey" id="mainScreen">
+        <div class="content">
+            <h1><b>THY Video Context Analyzer</b></h1>
+            <section id="section_1">
+                <div class="index" id="one">1</div>
+                <h2>Select Videos</h2>
+                <div id="section1Content">
+                    Our engine accepts all video formats. Select the files from your computer.
+                    <div id="videoContainer"></div>
+
+                    <div id="uploadAnim" style="display: none; text-align: center;">
+                        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_DKW2l4.json"
+                            background="transparent" speed="1" style="width: 100px; height: 100px; margin: auto;" loop
+                            autoplay>
+                        </lottie-player>
+                        <p class="animate-fading">Preprocessing the data</p>
+                    </div>
+
+                </div>
+                <button id="file_button" class="button">🎞️ Select Videos</button>
+            </section>
+            <section id="section_2">
+                <div class="index" id="two">2</div>
+                <h2>Process the Videos on Server</h2>
+                <div id="section2Content">
+                    In the server, we shrink the size of the videos, then process the videos with our YOLO-based model.
+
+                    <div id="readAnim" style="display: none; text-align: center;">
+                        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_w0cYJr.json"
+                            background="transparent" speed="1" style="width: 100px; height: 100px; margin: auto;" loop
+                            autoplay>
+                        </lottie-player>
+                        <p class="animate-fading">Preprocessing the data</p>
+                    </div>
+
+                    <div id="processAnim" style="display: none;">
+                        <p class="animate-fading">Finding the objects and key frames</p>
+                        <lottie-player src="https://assets5.lottiefiles.com/temp/lf20_dRqSdi.json"
+                            background="transparent" speed="1" style="width: 100px; height: 100px;  margin: auto;" loop
+                            autoplay>
+                        </lottie-player>
+                    </div>
+
+                </div>
+                <button id="send_button" class="button">⚙️ Process the Videos</button>
+            </section>
+            <section id="section_3">
+                <div class="index" id="three">3</div>
+                <h2>See the Results</h2>
+                <p id="section3Content">You can download the result logs as CSV, PDF or download the box-embedded video.
+                </p>
+                <div class="dropdown">
+                    <button class="dropdown-toggle button" id="download_results_btn" type="button"
+                        data-toggle="dropdown">📥 Download the Results
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="download_results_btn">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSV</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">PDF</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Video</a></li>
+                    </ul>
+                </div>
+            </section>
+            <section id="section_4">
+                <div class="index" id="four">4</div>
+                <h2>Accessibility</h2>
+                <img height="120px" width="auto" src="./img/inclusive.png">
+                <p id="section4Content">
+                    Analysing video content gives the opportunity to create an accessible service.
+                    Reading the context of the video might benefit mixed visual abilities such as blinds or service
+                    personnel who lost glasses or distracted driver.
+                    With our speech synthesis service, you can analyse the results on the go.
+                </p>
+                <button id="readSection4" class="button">🔊 Read the results</button>
+            </section>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script>
+        let s = new p5.Speech();
+
+        $(document).ready(function () {
+            $(".dropdown-toggle").dropdown();
+        });
+
+        document.getElementById('file_button').onclick = function () {
+            document.getElementById('file_in').click();
+        };
+        
+        document.getElementById('send_button').onclick = function () {
+            document.getElementById('readAnim').style.display = "block";
+        }
+    </script>
+</body>
+
+</html>
