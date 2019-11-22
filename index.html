@@ -62,12 +62,12 @@
                         <p class="animate-fading">Preprocessing the data</p>
                     </div>
 
-                    <div id="processAnim" style="display: none;">
-                        <p class="animate-fading">Finding the objects and key frames</p>
+                    <div id="processAnim" style="display: none; text-align: center;">
                         <lottie-player src="https://assets5.lottiefiles.com/temp/lf20_dRqSdi.json"
                             background="transparent" speed="1" style="width: 100px; height: 100px;  margin: auto;" loop
                             autoplay>
                         </lottie-player>
+                        <p class="animate-fading">Finding the objects and key frames</p>
                     </div>
 
                 </div>
@@ -117,7 +117,10 @@
         
         document.getElementById('send_button').onclick = function () {
             document.getElementById('readAnim').style.display = "block";
-            socket.broadcast.emit('read');
+            setTimeout(function(){
+                document.getElementById('readAnim').style.display = "none";
+                document.getElementById('processAnim').style.display = "block";
+            }, 10000);
         }
     </script>
 </body>

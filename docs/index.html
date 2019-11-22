@@ -16,7 +16,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
     <link rel="stylesheet" href="style/index.css">
 </head>
 
@@ -58,12 +57,12 @@
                         <p class="animate-fading">Preprocessing the data</p>
                     </div>
 
-                    <div id="processAnim" style="display: none;">
-                        <p class="animate-fading">Finding the objects and key frames</p>
+                    <div id="processAnim" style="display: none; text-align: center;">
                         <lottie-player src="https://assets5.lottiefiles.com/temp/lf20_dRqSdi.json"
                             background="transparent" speed="1" style="width: 100px; height: 100px;  margin: auto;" loop
                             autoplay>
                         </lottie-player>
+                        <p class="animate-fading">Finding the objects and key frames</p>
                     </div>
 
                 </div>
@@ -113,6 +112,10 @@
         
         document.getElementById('send_button').onclick = function () {
             document.getElementById('readAnim').style.display = "block";
+            setTimeout(function(){
+                document.getElementById('readAnim').style.display = "none";
+                document.getElementById('processAnim').style.display = "block";
+            }, 10000);
         }
     </script>
 </body>
