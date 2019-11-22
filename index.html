@@ -114,6 +114,7 @@
         document.getElementById('file_button').onclick = function () {
             document.getElementById('file_in').click();
         };
+        
         document.getElementById('send_button').onclick = function () {
             document.getElementById('readAnim').style.display = "block";
             socket.broadcast.emit('read');

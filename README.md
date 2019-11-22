@@ -6,7 +6,7 @@ Serve the web interface with:
 
 ```
 npm install
-node app.js
+node index.js
 ```
 
 
